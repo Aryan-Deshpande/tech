@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="https://github.com/gh-pages-minima-starter/feed.xml" rel="self" type="application/atom+xml" /><link href="https://github.com/gh-pages-minima-starter/" rel="alternate" type="text/html" /><updated>2024-04-12T17:00:59+00:00</updated><id>https://github.com/gh-pages-minima-starter/feed.xml</id><title type="html">My blog</title><subtitle>My very nice blog</subtitle><author><name>Jorge Sanz</name></author><entry><title type="html">Tutorial VIII: HTML</title><link href="https://github.com/gh-pages-minima-starter/2020/04/20/html.html" rel="alternate" type="text/html" title="Tutorial VIII: HTML" /><published>2020-04-20T00:00:00+00:00</published><updated>2020-04-20T00:00:00+00:00</updated><id>https://github.com/gh-pages-minima-starter/2020/04/20/html</id><content type="html" xml:base="https://github.com/gh-pages-minima-starter/2020/04/20/html.html">Quick note on highlighting that Markdown supports raw HTML. That means that if for some reason Markdown falls short or becomes inconvenient for a thing you are authoring, you can always use HTML as a fallback solution. One very common scenario is customizing the width and height of your images.
+
+You can check the source code of the [editing content]({% link _posts/2020-03-24-edit-content.md %}) post to see how I moved from the standard syntax for images using `![alt text](image path)` to use HTML to allow to set up a custom width using a CSS style.
+
+```html{% raw %}
+&lt;div style=&quot;text-align:right; margin: 20px 0&quot;&gt;
+  &lt;p&gt;
+    Another example could be to 
+    &lt;span style=&quot;color:red&quot;&gt;change text color&lt;/span&gt;.
+  &lt;/p&gt;
+&lt;/div&gt;
+{% endraw %}```
+
+
+&lt;div style=&quot;text-align:right; margin: 20px 0&quot;&gt;
+&lt;p&gt;
+Another example could be to &lt;span style=&quot;color:red&quot;&gt;change text color&lt;/span&gt;.
+&lt;/p&gt;
+&lt;/div&gt;
+
+Easy right? 😀</content><author><name>Jorge Sanz</name></author><summary type="html">Quick note on highlighting that Markdown supports raw HTML. That means that if for some reason Markdown falls short or becomes inconvenient for a thing you are authoring, you can always use HTML as a fallback solution. One very common scenario is customizing the width and height of your images. You can check the source code of the editing content post to see how I moved from the standard syntax for images using ![alt text](image path) to use HTML to allow to set up a custom width using a CSS style. &amp;lt;div style=&quot;text-align:right; margin: 20px 0&quot;&amp;gt; &amp;lt;p&amp;gt; Another example could be to &amp;lt;span style=&quot;color:red&quot;&amp;gt;change text color&amp;lt;/span&amp;gt;. &amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt; Another example could be to change text color. Easy right? 😀</summary></entry><entry><title type="html">Tutorial VI: local environment</title><link href="https://github.com/gh-pages-minima-starter/2020/04/17/local-env.html" rel="alternate" type="text/html" title="Tutorial VI: local environment" /><published>2020-04-17T00:00:00+00:00</published><updated>2020-04-17T00:00:00+00:00</updated><id>https://github.com/gh-pages-minima-starter/2020/04/17/local-env</id><content type="html" xml:base="https://github.com/gh-pages-minima-starter/2020/04/17/local-env.html">I've included a simple `docker-compose.yml` file in the root of the repo, so you can spin up a local environment without having to install in your computer Ruby or any other library. If you are versed in `Ruby`, `gems`, and `bundle` you can probably skip this section and go ahead!
+
+Just install [Docker][docker] and [Docker Compose][compose], visit the repo folder and run `docker compose build`. Then, every time you wan to spin up the local environment just run `docker compose up` and visit `http://localhost:8080/gh-pages-minima-starter`. 
+
+Alternatively, if you prefer to install all the software locally please follow the [docs][install].
+
+The compose file is super simple, it just refers to a local `Dockerfile` image definition setting up the current folder as the container `/srv/jekyll` directory and starts the server with convenient options like livereload.
+
+```yaml
+version: '3'
+
+services:
+  jekyll:
+    build:
+      context: .
+    command: jekyll serve --watch --force_polling --incremental --port 8080 -H 0.0.0.0 --livereload --livereload-port 35729 --baseurl /gh-pages-minima-starter
+    volumes:
+      - .:/srv/jekyll
+    ports:
+      - '8080:8080'
+      - '35729:35729'
+    environment: 
+      RUBYOPT: '-W0'
+      JEKYLL_ENV: production 
+```
+
+[install]: https://help.github.com/en/github/working-with-github-pages/testing-your-github-pages-site-locally-with-jekyll
+[docker]: https://docs.docker.com/get-docker/
+[compose]: https://docs.docker.com/compose/</content><author><name>Jorge Sanz</name></author><summary type="html">I’ve included a simple docker-compose.yml file in the root of the repo, so you can spin up a local environment without having to install in your computer Ruby or any other library. If you are versed in Ruby, gems, and bundle you can probably skip this section and go ahead! Just install Docker and Docker Compose, visit the repo folder and run docker compose build. Then, every time you wan to spin up the local environment just run docker compose up and visit http://localhost:8080/gh-pages-minima-starter. Alternatively, if you prefer to install all the software locally please follow the docs. The compose file is super simple, it just refers to a local Dockerfile image definition setting up the current folder as the container /srv/jekyll directory and starts the server with convenient options like livereload. version: '3' services: jekyll: build: context: . command: jekyll serve --watch --force_polling --incremental --port 8080 -H 0.0.0.0 --livereload --livereload-port 35729 --baseurl /gh-pages-minima-starter volumes: - .:/srv/jekyll ports: - '8080:8080' - '35729:35729' environment: RUBYOPT: '-W0' JEKYLL_ENV: production</summary></entry><entry><title type="html">Tutorial V: posts</title><link href="https://github.com/gh-pages-minima-starter/2020/04/15/posts.html" rel="alternate" type="text/html" title="Tutorial V: posts" /><published>2020-04-15T00:00:00+00:00</published><updated>2020-04-15T00:00:00+00:00</updated><id>https://github.com/gh-pages-minima-starter/2020/04/15/posts</id><content type="html" xml:base="https://github.com/gh-pages-minima-starter/2020/04/15/posts.html">Posts in your website are stored in the `_posts` folder and they follow a naming convention that you should follow using the date first (year, month, day) and then a simple title slug. This helps to keep things organized.
+
+If you are using Github interface, you can use the top right buttons to create new files or upload them.
+
+![]({{ site.base_url }}{% link /assets/imgs/files.png %})
+
+Find more details on how to write Jekyll posts on [the docs](https://jekyllrb.com/docs/posts/).</content><author><name>Jorge Sanz</name></author><summary type="html">Posts in your website are stored in the _posts folder and they follow a naming convention that you should follow using the date first (year, month, day) and then a simple title slug. This helps to keep things organized. If you are using Github interface, you can use the top right buttons to create new files or upload them. Find more details on how to write Jekyll posts on the docs.</summary></entry><entry><title type="html">Tutorial IV: editing from Github</title><link href="https://github.com/gh-pages-minima-starter/2020/03/25/github-edit.html" rel="alternate" type="text/html" title="Tutorial IV: editing from Github" /><published>2020-03-25T00:00:00+00:00</published><updated>2020-03-25T00:00:00+00:00</updated><id>https://github.com/gh-pages-minima-starter/2020/03/25/github-edit</id><content type="html" xml:base="https://github.com/gh-pages-minima-starter/2020/03/25/github-edit.html">Editing pages in Github is **super simple**, just click on the pencil in the top right corner and open an editing interface where you can even preview the changes that you are applying. Once you are done add a short comment to your change (_commit_ in git/github vocabulary) and save them. Remember all changes are saved and available for you to explore afterwards if needed.
+
+![]({{ site.base_url }}{% link /assets/imgs/editing.gif %})
+
+If your site grows you may want to set up a local environment to make things easier to you. We cover that in the [local environment]({% link _posts/2020-04-15-posts.md %}) post.</content><author><name>Jorge Sanz</name></author><summary type="html">Editing pages in Github is super simple, just click on the pencil in the top right corner and open an editing interface where you can even preview the changes that you are applying. Once you are done add a short comment to your change (commit in git/github vocabulary) and save them. Remember all changes are saved and available for you to explore afterwards if needed. If your site grows you may want to set up a local environment to make things easier to you. We cover that in the local environment post.</summary></entry><entry><title type="html">Tutorial III: editing your content</title><link href="https://github.com/gh-pages-minima-starter/2020/03/24/edit-content.html" rel="alternate" type="text/html" title="Tutorial III: editing your content" /><published>2020-03-24T00:00:00+00:00</published><updated>2020-03-24T00:00:00+00:00</updated><id>https://github.com/gh-pages-minima-starter/2020/03/24/edit-content</id><content type="html" xml:base="https://github.com/gh-pages-minima-starter/2020/03/24/edit-content.html">From the [last post]({{ site.base_url }}{% link _posts/2020-03-22-get-code.md %}), your website is published with your details but now how to edit the frontpage, remove the example blog posts or create your own. Let's dive in to that. 
+
+First thing to know is that [Github Pages](https://pages.github.com/) by default accepts rendering content in HTML and [Markdown](https://daringfireball.net/projects/markdown/syntax). I **strongly** recommend using Markdown because it's very simple and out of your way when you write, since the formatting rules are very simple. If you are going to write a long piece, you may want to use an external editor and then upload or paste your content into github. There are many text editors that support Markdown but if I have to suggest one that works well for writing I'd go for [typora](https://typora.io/) because it's supporting Linux, Windows, and also MacOS (in beta).
+
+&lt;img src=&quot;{{ site.base_url }}{% link /assets/imgs/typora.png %}&quot; style=&quot;width:400px&quot;&gt;&lt;br&gt;
+_Typora_</content><author><name>Jorge Sanz</name></author><summary type="html">From the last post, your website is published with your details but now how to edit the frontpage, remove the example blog posts or create your own. Let’s dive in to that. First thing to know is that Github Pages by default accepts rendering content in HTML and Markdown. I strongly recommend using Markdown because it’s very simple and out of your way when you write, since the formatting rules are very simple. If you are going to write a long piece, you may want to use an external editor and then upload or paste your content into github. There are many text editors that support Markdown but if I have to suggest one that works well for writing I’d go for typora because it’s supporting Linux, Windows, and also MacOS (in beta). Typora</summary></entry><entry><title type="html">Tutorial II: Take the code!</title><link href="https://github.com/gh-pages-minima-starter/2020/03/22/get-code.html" rel="alternate" type="text/html" title="Tutorial II: Take the code!" /><published>2020-03-22T00:00:00+00:00</published><updated>2020-03-22T00:00:00+00:00</updated><id>https://github.com/gh-pages-minima-starter/2020/03/22/get-code</id><content type="html" xml:base="https://github.com/gh-pages-minima-starter/2020/03/22/get-code.html">How to use this template? Well the easiest way may be to hit the **&quot;Use this template&quot;** green button on the [Github repository](https://github.com/jsanz/gh-pages-minima-starter) page to copy the repository structure into your own account. You can have your website **without setting up a local environment** (but [you can do it]({{ site.baseurl }}{% post_url 2020-04-17-local-env %}) if you are a bit tech savvy).
+
+After creating the project, the first thing I would do is to change the project name at the `Settings` tab. The name of the project will became part of the website main address. So if for example you name your repo as `myblog`, your website will be available at `https://yourusername.github.io/myblog`. There is a special case, if you name your repo as `yourusername.github.io` then the website will be published at `https://yourusername.github.io` which may be a good idea for a personal website!
+
+Next thing to do is to customize the main settings on the `_config.yml` file: website title, description, base URL (remove this setting it if you are deploying to your GitHub user website), and your details. If you don't want to show excerpts of your posts in the front page you can disable that checking removing that entry on adding a `#` at the beginning of that line. You don't need to change anything else.
+
+After the configuration is ready you can enable the website publishing on the same `Settings` page a bit further down. Remember to set up the `master` branch as the source of your documents. Once you save your settings wait for a few minutes and your site is ready!!
+
+&lt;img src=&quot;{{ site.base_url }}{% link /assets/imgs/gh-pages.png %}&quot; width=&quot;80%&quot;&gt;
+
+Any time you change anything in your repository you do an operation called _pushing a commit_. On every push the website is rebuilt. You can see the details of that process in the `Environment` section that is accessible from the repository front-page.
+
+
+
+![](./assets/imgs/environments.png)</content><author><name>Jorge Sanz</name></author><summary type="html">How to use this template? Well the easiest way may be to hit the “Use this template” green button on the Github repository page to copy the repository structure into your own account. You can have your website without setting up a local environment (but you can do it if you are a bit tech savvy). After creating the project, the first thing I would do is to change the project name at the Settings tab. The name of the project will became part of the website main address. So if for example you name your repo as myblog, your website will be available at https://yourusername.github.io/myblog. There is a special case, if you name your repo as yourusername.github.io then the website will be published at https://yourusername.github.io which may be a good idea for a personal website! Next thing to do is to customize the main settings on the _config.yml file: website title, description, base URL (remove this setting it if you are deploying to your GitHub user website), and your details. If you don’t want to show excerpts of your posts in the front page you can disable that checking removing that entry on adding a # at the beginning of that line. You don’t need to change anything else. After the configuration is ready you can enable the website publishing on the same Settings page a bit further down. Remember to set up the master branch as the source of your documents. Once you save your settings wait for a few minutes and your site is ready!! Any time you change anything in your repository you do an operation called pushing a commit. On every push the website is rebuilt. You can see the details of that process in the Environment section that is accessible from the repository front-page.</summary></entry><entry><title type="html">Tutorial I: my first post</title><link href="https://github.com/gh-pages-minima-starter/2020/03/18/my-first-post.html" rel="alternate" type="text/html" title="Tutorial I: my first post" /><published>2020-03-18T00:00:00+00:00</published><updated>2020-03-18T00:00:00+00:00</updated><id>https://github.com/gh-pages-minima-starter/2020/03/18/my-first-post</id><content type="html" xml:base="https://github.com/gh-pages-minima-starter/2020/03/18/my-first-post.html">This is **my very first post**!! I can write
+
+* unnumbered
+* fancy
+* lists
+
+But also
+
+1. numbered
+1. ones
+1. easily
+
+Images
+
+![a gif!](https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif)
+
+And so on...</content><author><name>Jorge Sanz</name></author><summary type="html">This is my very first post!! I can write unnumbered fancy lists But also numbered ones easily Images And so on…</summary></entry></feed>
