@@ -85,6 +85,7 @@
   <main class="page-content" aria-label="Content">
     <div class="wrapper">
       <div class="home" style="text-align: center">
+        <span id="clock"></span>
 
         <p class="move"><img src="./imgs/jj.jpg"
             style="border-radius: 50%; width: 200px; height: 200px; overflow: hidden;" />
@@ -258,6 +259,19 @@
   </footer>
 
   <script>
+    var span = document.getElementById('clock');
+
+    function time() {
+      var d = new Date();
+      var s = d.getSeconds();
+      var m = d.getMinutes();
+      var h = d.getHours();
+      span.textContent = 
+        ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2) + ":" + ("0" + s).substr(-2);
+    }
+    
+    setInterval(time, 1000);
+    
     function copyToClipboard() {
       const textToCopy = "This is the text to copy to clipboard.";
 
