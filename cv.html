@@ -153,28 +153,6 @@
                 <iframe src="./imgs/aryan_deshpande_resume.pdf#toolbar=0" width="100%" height="500">
                 </iframe>
 
-                <h1 class="page-heading"></h1>
-                <div class="intro">
-
-                    <h1 style="text-align: center;" class="intro"><mark style="background-color:white"><strong>
-                                <bold>ML & Backend engineering</bold>
-                            </strong></mark></h1>
-
-
-                    <p class="intro"><u>About</u></p>
-                    <p style="text-align: justify;"> I am a final year student pursuing Computer Science. I work along
-                        the lines
-                        of Deep Learning and Backend Infrastructure stuff. My research interests prominently focus on
-                        Language Models, Generative 3D Modelling & Robotics</p>
-
-                    <p style="text-align: justify;">In addition to these, I have an inclination towards Mechanistic
-                        Interpretability,
-                        understanding the underlying mechanisms of complex language models. I find immense joy in the
-                        art of reverse
-                        engineering models,
-                        and building stuff out of that.</p>
-                    <p>And I can't stop watching Conan O'Brien.</p>
-                </div>
 
                 <br>
                 <br>
@@ -193,63 +171,7 @@
                 <hr>
                 <br>
                 <br>
-                <br>
-
-                <h1 id="skills" style="text-align: center;" class="intro"><mark style="background-color:white"><strong>
-                            <bold>SKILLS</bold>
-                        </strong></mark></h1>
-
-                <h2 style="text-align: center;" class="intro">Programming/Framework:</h2>
-                <div class="intro" style="text-align: center;">
-                    <span class="skill">Python, </span>
-                    <span class="skill">Go, </span>
-                    <span class="skill">C, </span>
-                    <span class="skill">C++, </span>
-                    <span class="skill">JavaScript</span>
-                    <span class="skill">Flask, </span>
-                    <span class="skill">NodeJS, </span>
-                    <span class="skill">ReactJS</span>
-                </div>
-
-                <br>
-
-                <h2 style="text-align: center;" class="intro">Tools:</h2>
-                <div class="intro">
-
-                    <span class="skill">Git, </span>&nbsp;
-                    <span class="skill">Docker, </span>&nbsp;
-                    <span class="skill">Kubernetes, </span>&nbsp;
-                    <span class="skill">Microsoft Azure, </span>&nbsp;
-                    <span class="skill">Google Cloud Platform, </span>&nbsp;
-                    <span class="skill">AWS EC2, </span>&nbsp;
-                    <span class="skill">AWS S3, </span>&nbsp;
-                    <span class="skill">Github-Actions, </span>&nbsp;
-                    <span class="skill">MongoDB, </span>&nbsp;
-                    <span class="skill">MySQL, </span>&nbsp;
-                    <span class="skill">PostgreSQL, </span>&nbsp;
-                    <span class="skill">FireBase, </span>&nbsp;
-                    <span class="skill">LaTeX, </span>&nbsp;
-                </div>
-
-                <br>
-
-                <h2 style="text-align: center;" class="intro">Machine Learning:</h2>
-                <div class="intro">
-
-                    <span class="skill">PyTorch, </span>
-                    <span class="skill">TensorFlow, </span>
-                    <span class="skill">CUDA, </span>
-                    <span class="skill">Keras, </span>
-                    <span class="skill">NLTK, </span>
-                    <span class="skill">OpenCV, </span>
-                    <span class="skill">Numpy, </span>
-                    <span class="skill">Pandas, </span>
-                    <span class="skill">Huggingface, </span>
-                    <span class="skill">CONDA, </span>
-                    <span class="skill">Seaborn, </span>
-                    <span class="skill">Matplotlib</span>
-                </div>
-
+                <br>                
 
             </div>
         </div>
@@ -283,6 +205,61 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        var span = document.getElementById('clock');
+    
+    function time() {
+      var d = new Date();
+      var utcHours = d.getUTCHours();
+      var utcMinutes = d.getUTCMinutes();
+      var utcSeconds = d.getUTCSeconds();
+    
+      // Convert UTC time to IST
+      var istHours = utcHours + 5; // Add 5 hours for IST
+      var istMinutes = utcMinutes + 30; // Add 30 minutes for IST
+    
+      // Adjust if minutes or hours go beyond 60
+      if (istMinutes >= 60) {
+        istMinutes -= 60;
+        istHours += 1;
+      }
+      if (istHours >= 24) {
+        istHours -= 24;
+      }
+    
+      // Format the time as HH:MM:SS
+      var formattedTime =
+        ("0" + istHours).slice(-2) +
+        ":" +
+        ("0" + istMinutes).slice(-2) +
+        ":" +
+        ("0" + utcSeconds).slice(-2);
+    
+      span.textContent = formattedTime;
+    }
+    
+    setInterval(time, 1000);
+        
+        function copyToClipboard() {
+          const textToCopy = "This is the text to copy to clipboard.";
+    
+          // Create a temporary textarea element to hold the text to be copied
+          const tempTextArea = document.createElement('textarea');
+          tempTextArea.value = textToCopy;
+          document.body.appendChild(tempTextArea);
+    
+          // Select and copy the text inside the textarea
+          tempTextArea.select();
+          document.execCommand('copy');
+    
+          // Remove the temporary textarea
+          document.body.removeChild(tempTextArea);
+    
+          // Alert the user
+          alert("Text copied to clipboard!");
+        }
+      </script>
 
 </body>
 
