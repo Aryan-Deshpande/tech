@@ -268,6 +268,7 @@ table td {
 
     .site-nav label[for="nav-trigger"] {
         display: block;
+        float: centre;
         width: 36px;
         height: 36px;
         z-index: 2;
